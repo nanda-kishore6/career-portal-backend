@@ -10,23 +10,16 @@ import bookmarkRoutes from "./routes/bookmark.routes";
 const app = express();
 
 
+
+
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // allow requests with no origin (like curl, Postman)
-      if (!origin) return callback(null, true);
-
-      // allow ONLY your frontend
-      if (origin === process.env.FRONTEND_URL) {
-        return callback(null, true);
-      }
-
-      return callback(new Error("CORS not allowed"), false);
-    },
+    origin: true, // 🔥 reflect request origin
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 
 
