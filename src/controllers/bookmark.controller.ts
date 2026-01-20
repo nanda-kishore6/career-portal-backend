@@ -17,7 +17,8 @@ export const bookmarkOpportunity = async (
       });
     }
 
-    const { opportunityId } = req.params;
+   const opportunityId = String(req.params.opportunityId);
+
 
     const bookmark = await bookmarkOpportunityService({
       user_id: req.user.id,
@@ -52,7 +53,7 @@ export const removeBookmark = async (
       });
     }
 
-    const { opportunityId } = req.params;
+    const opportunityId = String(req.params.opportunityId);
 
     await removeBookmarkService({
       user_id: req.user.id,

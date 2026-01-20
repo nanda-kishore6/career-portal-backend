@@ -132,7 +132,8 @@ export const getOpportunityById = async (
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    const { id } = req.params;
+    const id = String(req.params.id);
+
 
     const opportunity = await getOpportunityByIdService(id);
 
@@ -156,7 +157,8 @@ export const updateOpportunity = async (
       return res.status(403).json({ message: "Forbidden" });
     }
 
-    const { id } = req.params;
+    const id = String(req.params.id);
+
 
     const updated = await updateOpportunityService(id, req.body);
 
@@ -179,7 +181,8 @@ export const deleteOpportunity = async (
       return res.status(403).json({ message: "Forbidden" });
     }
 
-    const { id } = req.params;
+    const id = String(req.params.id);
+
 
     await deleteOpportunityService(id);
 

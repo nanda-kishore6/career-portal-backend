@@ -14,7 +14,8 @@ export const applyToOpportunity = async (
       });
     }
 
-    const { opportunityId } = req.params;
+    const opportunityId = String(req.params.opportunityId);
+
 
     if (!opportunityId) {
       return res.status(400).json({
@@ -75,7 +76,7 @@ export const updateApplicationStatus = async (
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    const { applicationId } = req.params;
+    const applicationId = String(req.params.applicationId);
     const { status } = req.body;
 
     if (!status) {
